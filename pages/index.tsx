@@ -1,20 +1,15 @@
-import React, { useRef } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import Header from '../components/Header';
-import ServiceCard from '../components/ServiceCard';
 import Socials from '../components/Socials';
 import WorkCard from '../components/WorkCard';
-
-
-// Local Data
+import Head from 'next/head';
 import data from '../data';
 
+
 export default function Home() {
-  // Ref
   const workRef = React.useRef<HTMLDivElement>(null);
   const aboutRef = React.useRef<HTMLDivElement>(null);
 
-  // Handling Scroll
   const handleWorkScroll = () => {
     if (null !== workRef.current) {
       window.scrollTo({
@@ -37,13 +32,17 @@ export default function Home() {
 
   return (
     <div className='container mx-auto mb-10'>
+      <Head>
+        <link rel='icon' href='./binary.png' />
+        <title>Iasmim | Dev Full-Stack</title>
+      </Head>
       <Header
         handleWorkScroll={handleWorkScroll}
         handleAboutScroll={handleAboutScroll}
       />
       <div className='laptop:mt-20 mob:mt-10'>
         <h1 className='mt-5 text-8xl mob:text-3xl laptop:text-8xl mob:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5'>
-          {data.headerTaglineOne} 
+          {data.headerTaglineOne}
           {data.headerTaglineTwo}
         </h1>
         <Socials className='mt-5 mob:mt-2 laptop:mt-5' />
@@ -65,18 +64,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {/* <div className='mt-40 mob:mt-2 laptop:mt-40 mob:p-2 laptop:p-0'>
-        <h1 className='text-2xl text-bold'>Services.</h1>
-        <div className='mt-10 grid grid-cols-2 mob:grid-cols-1 laptop:grid-cols-2 gap-6'>
-          {data.services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              name={service.title}
-              description={service.description}
-            />
-          ))}
-        </div>
-      </div> */}
       <div
         className='mt-40 mob:mt-2 laptop:mt-40 mob:p-2 laptop:p-0'
         ref={aboutRef}
