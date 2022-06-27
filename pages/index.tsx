@@ -5,7 +5,6 @@ import WorkCard from '../components/WorkCard';
 import Head from 'next/head';
 import data from '../data';
 
-
 export default function Home() {
   const workRef = React.useRef<HTMLDivElement>(null);
   const aboutRef = React.useRef<HTMLDivElement>(null);
